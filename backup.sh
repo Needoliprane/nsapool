@@ -18,5 +18,5 @@ for DB_NAME in $DATABASES; do
 done
 # boucle sur les bases pour compresser les fichiers
 for DB_NAME in $DATABASES; do
-    tar -czvf /backup/$OUTDIR_$DB_NAME.sql /backup/$OUTDIR_$DB_NAME.sql.tar.gz
+    tar -czvf /backup/$OUTDIR_$DB_NAME.sql.tar.gz /backup/$OUTDIR_$DB_NAME.sql
 done
