@@ -14,9 +14,9 @@ mkdir -p /var/archives/$OUTDIR
 DATABASES=`MYSQL_PWD=$DB_PASS mysql -u $DB_USER -e "SHOW DATABASES;" | tr -d "| " | grep -v -e Database -e _schema -e mysql`
 # boucle sur les bases pour les dumper
 for DB_NAME in $DATABASES; do
-    MYSQL_PWD=$DB_PASS mysqldump -u $DB_USER --single-transaction --skip-lock-tables $DB_NAME -h $DB_HOST > /backup.sql
+    MYSQL_PWD=$DB_PASS mysqldump -u $DB_USER --single-transaction --skip-lock-tables $DB_NAME -h $DB_HOST > /backup/backup.sql
 done
 # boucle sur les bases pour compresser les fichiers
 for DB_NAME in $DATABASES; do
-    gzip /backup.sql
+    gzip /backup/backup.sql
 done
