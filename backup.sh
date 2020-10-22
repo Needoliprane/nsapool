@@ -12,7 +12,7 @@ OUTDIR=`date +%Y-%m-%d/%H:%M:%S`
 mkdir -p /var/archives/$OUTDIR
 # récupération de la liste des bases
 DATABASES=`MYSQL_PWD=$DB_PASS mysql -u $DB_USER -e "SHOW DATABASES;" | tr -d "| " | grep -v -e Database -e _schema -e mysql`
-# boucle sur les bases pour les dumper
+
 for DB_NAME in $DATABASES; do
     MYSQL_PWD=$DB_PASS mysqldump -u $DB_USER --single-transaction --skip-lock-tables $DB_NAME -h $DB_HOST > /backup/$OUTDIR_$DB_NAME.sql
 done
